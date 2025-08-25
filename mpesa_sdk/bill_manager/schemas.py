@@ -56,6 +56,10 @@ class BillManagerOptInResponse(BaseModel):
         }
     )
 
+    def is_successful(self) -> bool:
+        """Checks if the response indicates success."""
+        return self.rescode == "200"
+
 
 # Update Opt-in Details API
 class BillManagerUpdateOptInRequest(BaseModel):
@@ -97,6 +101,10 @@ class BillManagerUpdateOptInResponse(BaseModel):
     model_config = ConfigDict(
         json_schema_extra={"example": {"resmsg": "Success", "rescode": "200"}}
     )
+
+    def is_successful(self) -> bool:
+        """Checks if the response indicates success."""
+        return self.rescode == "200"
 
 
 # Invoice Item
@@ -323,6 +331,10 @@ class BillManagerBulkInvoiceResponse(BaseModel):
             }
         }
     )
+
+    def is_successful(self) -> bool:
+        """Checks if the response indicates success."""
+        return self.rescode == "200"
 
 
 # Cancel Single Invoice API

@@ -18,7 +18,6 @@ import pytest
 from mpesa_sdk.mpesa_express import schemas
 from pydantic import ValidationError
 import base64
-from datetime import datetime
 
 
 def test_transaction_type_enum():

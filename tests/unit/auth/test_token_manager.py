@@ -4,7 +4,7 @@ These tests cover token retrieval, caching, and error handling.
 """
 
 import pytest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 from mpesa_sdk.http_client import HttpClient
 from mpesa_sdk.auth import TokenManager
 from mpesa_sdk.errors import MpesaApiException, MpesaError

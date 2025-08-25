@@ -1,7 +1,5 @@
 """Facade for M-Pesa Dynamic QR Code generation service."""
 
-from typing import Optional
-import os
 from mpesa_sdk.auth import TokenManager
 from mpesa_sdk.http_client.mpesa_http_client import HttpClient
 from mpesa_sdk.dynamic_qr_code import (

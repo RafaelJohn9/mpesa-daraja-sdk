@@ -3,7 +3,6 @@
 It includes models for reversal requests, responses, and result notifications.
 """
 
-from enum import Enum
 from pydantic import BaseModel, Field, ConfigDict, model_validator
 from typing import Optional, List
 

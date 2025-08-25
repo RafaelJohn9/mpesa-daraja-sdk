@@ -3,7 +3,7 @@
 Stores, validates, and exposes callbacks for test assertions.
 """
 
-from fastapi import FastAPI, Request, HTTPException, Depends
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
 from typing import List, Dict, Any
 import logging

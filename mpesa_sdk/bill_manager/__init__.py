@@ -14,6 +14,7 @@ from .schemas import (
     BillManagerPaymentNotificationResponse,
     BillManagerPaymentAcknowledgmentRequest,
     BillManagerPaymentAcknowledgmentResponse,
+    InvoiceItem,
 )
 
 from .bill_manager import BillManager
@@ -35,4 +36,5 @@ __all__ = [
     "BillManagerPaymentAcknowledgmentRequest",
     "BillManagerPaymentAcknowledgmentResponse",
     "BillManager",
+    "InvoiceItem",
 ]

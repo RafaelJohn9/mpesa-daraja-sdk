@@ -8,7 +8,7 @@ import os
 import pytest
 from mpesa_sdk.auth import TokenManager
 from mpesa_sdk.http_client import MpesaHttpClient
-from mpesa_sdk.errors import MpesaError, MpesaApiException
+from mpesa_sdk.errors import MpesaApiException
 
 load_dotenv()
 

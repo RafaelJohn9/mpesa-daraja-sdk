@@ -2,7 +2,7 @@
 
 from mpesa_sdk.auth import TokenManager
 from mpesa_sdk.http_client import HttpClient
-from mpesa_sdk.B2C import B2C, B2CRequest, B2CResponse
+from mpesa_sdk.B2C import B2C, B2CRequest, B2CResponse, B2CCommandIDType
 from mpesa_sdk.B2C_account_top_up import (
     B2CAccountTopUp,
     B2CAccountTopUpRequest,
@@ -27,11 +27,14 @@ class B2CService:
         originator_conversation_id: str,
         initiator_name: str,
         security_credential: str,
+        command_id: B2CCommandIDType,
         amount: int,
-        shortcode: str,
-        recipient_phone: str,
+        party_a: str,
+        party_b: str,
+        remarks: str,
         queue_timeout_url: str,
         result_url: str,
+        occasion: str = "",
         **kwargs,
     ) -> B2CResponse:
         """Initiate a B2C payment request.
@@ -40,25 +43,31 @@ class B2CService:
             originator_conversation_id: Unique ID for the transaction.
             initiator_name: The name of the initiator.
             security_credential: The encrypted security credential.
+            command_id: The command ID for the transaction.
             amount: The amount to be sent.
-            shortcode: The business short code.
-            recipient_phone: The recipient's phone number.
+            party_a: The business short code.
+            party_b: The recipient's phone number.
+            remarks: Remarks for the transaction.
             queue_timeout_url: URL for timeout notifications.
             result_url: URL for result notifications.
-            kwargs: Fields for B2CRequest.
+            occasion: Occasion for the transaction.
+            kwargs: Additional fields for B2CRequest.
 
         Returns:
             B2CResponse: Response from M-Pesa API.
         """
         request = B2CRequest(
-            originator_conversation_id=originator_conversation_id,
-            initiator_name=initiator_name,
-            security_credential=security_credential,
-            amount=amount,
-            shortcode=shortcode,
-            recipient_phone=recipient_phone,
-            queue_timeout_url=queue_timeout_url,
-            result_url=result_url,
+            OriginatorConversationID=originator_conversation_id,
+            InitiatorName=initiator_name,
+            SecurityCredential=security_credential,
+            CommandID=command_id.value,
+            Amount=amount,
+            PartyA=party_a,
+            PartyB=party_b,
+            Remarks=remarks,
+            QueueTimeOutURL=queue_timeout_url,
+            ResultURL=result_url,
+            Occasion=occasion,
             **{k: v for k, v in kwargs.items() if k in B2CRequest.model_fields},
         )
         return self.b2c.send_payment(request)
@@ -96,16 +105,16 @@ class B2CService:
             B2CAccountTopUpResponse: Response from M-Pesa API.
         """
         request = B2CAccountTopUpRequest(
-            initiator=initiator,
-            security_credential=security_credential,
-            amount=amount,
-            party_a=party_a,
-            party_b=party_b,
-            account_reference=account_reference,
-            requester=requester,
-            remarks=remarks,
-            queue_timeout_url=queue_timeout_url,
-            result_url=result_url,
+            Initiator=initiator,
+            SecurityCredential=security_credential,
+            Amount=amount,
+            PartyA=party_a,
+            PartyB=party_b,
+            AccountReference=account_reference,
+            Requester=requester,
+            Remarks=remarks,
+            QueueTimeOutURL=queue_timeout_url,
+            ResultURL=result_url,
             **{
                 k: v
                 for k, v in kwargs.items()

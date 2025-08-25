@@ -39,8 +39,8 @@ def test_c2b_register_url_e2e(c2b_service):
     """End-to-end test for M-Pesa C2B Register URL, Validation, and Confirmation."""
     print("🔗 Starting E2E Test: C2B Register URL, Validation, and Confirmation")
 
-    validation_url = f"https://domainpath.com/c2b/validation"
-    confirmation_url = f"https://domainpath.com/c2b/confirmation"
+    validation_url = "https://domainpath.com/c2b/validation"
+    confirmation_url = "https://domainpath.com/c2b/confirmation"
     print(f"📨 Using validation URL: {validation_url}")
     print(f"📨 Using confirmation URL: {confirmation_url}")
 

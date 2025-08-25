@@ -5,7 +5,6 @@ It includes request and response models using Pydantic for validation and serial
 """
 
 from enum import Enum
-from typing import Optional
 from pydantic import BaseModel, Field, ConfigDict
 from pydantic import model_validator
 from mpesa_sdk.utils.phone import normalize_phone_number
